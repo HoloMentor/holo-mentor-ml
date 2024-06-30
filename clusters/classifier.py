@@ -63,7 +63,7 @@ def run_classifier(cluster_count=5):
         sc = SparkContext.getOrCreate(SparkConf().setMaster("local[*]").setAppName("SparkSQL"))
         spark = SparkSession(sc)
 
-        host = '192.168.8.175'
+        host = 'host.docker.internal'
         port = '5000' 
         database = 'holomentor_db'
         user = 'postgres'
