@@ -29,7 +29,7 @@ def update_institute_class_students(conn, update_data):
         update_query = """
         UPDATE institute_class_students
         SET tier = %s, tier_last_updated_at = %s
-        WHERE student_id = %s
+        WHERE id = %s
         """
         
         current_time = datetime.now()
@@ -52,7 +52,7 @@ def insert_and_update_institute_class_tier_students(conn, insert_data, out_of, c
         select_query = """
             SELECT class_id, institute_id 
             FROM institute_class_students 
-            WHERE student_id = %s AND class_id = %s
+            WHERE id = %s
         """
         cur.execute(select_query, (student_id, class_id))
         result = cur.fetchone()
@@ -64,7 +64,7 @@ def insert_and_update_institute_class_tier_students(conn, insert_data, out_of, c
             select_student_class_id_query = """
                 SELECT id
                 FROM institute_class_students
-                WHERE student_id = %s AND class_id = %s
+                WHERE id = %s
             """
             cur.execute(select_student_class_id_query, (student_id, class_id))
             result_1 = cur.fetchone()
