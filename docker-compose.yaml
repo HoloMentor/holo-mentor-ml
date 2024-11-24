@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .  
-      dockerfile: Dockerfile  
+      dockerfile: ./tier_seperator/Dockerfile  
     ports:
       - "8080:8080"  
     environment:
