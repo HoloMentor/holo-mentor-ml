@@ -9,9 +9,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && \
-    apt-get install -y default-jdk-headless procps && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update 
 
 # Copy requirements file
 COPY ./tier_seperator/requirements.txt /app/requirements.txt
