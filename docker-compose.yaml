@@ -2,13 +2,15 @@ version: '3.8'
 
 services:
   app:
+    container_name: tier_seperator
     build:
       context: .  
       dockerfile: ./tier_seperator/Dockerfile  
     ports:
-      - "8081:8081"  
+      - "8080:8081"  
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
     volumes:
-      - .:/app  
+      - ./tier_seperator:/app
+  
