@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY . /app
 
 # Expose port (if needed, adjust based on your application)
-EXPOSE 8081
+EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8081"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
