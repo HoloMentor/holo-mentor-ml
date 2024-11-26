@@ -9,7 +9,7 @@ Ensure you have Docker and Docker Compose installed on your machine. You can fol
 Before running the application, set the following environment variables in a `.env` file in the parent directory:
 
 ### Steps to Create `.env` File:
-1. In the **parent directory** of the project, create a new file named `.env`.
+1. In the **root directory** of the each, create a new file named `.env`.
 2. Add the following environment variables to the `.env` file:
 
 ```plaintext
