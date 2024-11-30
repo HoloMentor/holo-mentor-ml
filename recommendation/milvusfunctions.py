@@ -1,7 +1,8 @@
 from pymilvus import connections, Collection, FieldSchema, CollectionSchema, DataType, utility
 from langchain_milvus.retrievers import MilvusCollectionHybridSearchRetriever
 
-connections.connect("default", host="localhost", port="19530")
+connections.connect("default", host="host.docker.internal", port="19530")
+
 
 def create_or_load_collection(collection_name: str):
     if not utility.has_collection(collection_name):

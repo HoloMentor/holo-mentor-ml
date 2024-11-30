@@ -17,13 +17,14 @@ RUN apt-get update && \
 COPY requirements.txt /app/requirements.txt
 
 # Install Python dependencies (this will be cached if requirements.txt doesn't change)
+RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+RUN pip install langchain
+
 RUN pip install --no-cache-dir -r /app/requirements.txt --timeout=600
 
-# Copy the rest of the application code (after installing dependencies)
 COPY . /app
 
-# Expose port (if needed, adjust based on your application)
 EXPOSE 8000
 
-# Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8082"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8082"]

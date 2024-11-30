@@ -5,8 +5,6 @@ python-dotenv
 python-multipart
 uvicorn
 fastapi
-scikit-learn
-pandas
 psycopg2-binary
 fastapi-cli
-torch
+langchain
