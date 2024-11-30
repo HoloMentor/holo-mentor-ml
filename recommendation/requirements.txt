@@ -1,13 +1,10 @@
 langchain_milvus
-pytorch
 pymilvus
 pymilvus[model]
 python-dotenv
 python-multipart
 uvicorn
 fastapi
-pytorch
-scikit-learn
-pandas
 psycopg2-binary
 fastapi-cli
+langchain
