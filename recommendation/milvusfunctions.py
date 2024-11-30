@@ -29,10 +29,8 @@ def create_or_load_collection(collection_name: str):
 
         collection.flush()
 
-        print(f"Collection '{collection_name}' created successfully.")
     else:
         collection = Collection(name=collection_name)
-        print(f"Collection '{collection_name}' already exists.")
 
     return collection
 

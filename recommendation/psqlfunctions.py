@@ -63,7 +63,7 @@ def get_mcq_questions(wrong_mcq_question_ids, conn):
     return wrong_mcq_questions
 
 
-def load_mcq_question_by_id(mcq_question_id, conn):
+def load_mcq_question_by_id(conn,mcq_question_id):
     cur = conn.cursor()
 
     query = """
@@ -95,8 +95,8 @@ def insert_custom_quiz(class_id, student_id, question_ids, conn):
             """
 
     cur.execute(query, (class_id, student_id, question_ids_json))
-
-    print(f"Custom quiz inserted successfully for student {student_id} in class {class_id}.")
     row = cur.fetchone()
     conn.commit()
     cur.close()
+
+    return True if row else False
