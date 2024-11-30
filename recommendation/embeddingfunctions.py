@@ -1,4 +1,5 @@
-def embed_documents(wrong_mcq_questions, dense_embedding_instance, sparse_embedding_func):
+def embed_documents(wrong_mcq_questions, dense_embedding_instance):
+    print("Embedding documents...")
     embeddings_with_metadata = []
 
     for doc in wrong_mcq_questions:
@@ -9,7 +10,6 @@ def embed_documents(wrong_mcq_questions, dense_embedding_instance, sparse_embedd
             "id": question_id,
             "text": content_text,
             "embedding": dense_embedding_instance.embed_documents(content_text),  # Assuming embedding_func is defined
-            "sparse": sparse_embedding_func.embed_documents(content_text)[0],  # Assuming sparse_embedding_func is defined
             "metadata": {
                 "topic": doc.get('topic'),
                 "sub_topic": doc.get('sub_topic'),
