@@ -89,3 +89,29 @@ def insert_and_update_institute_class_tier_students(conn, insert_data, out_of, c
         
     conn.commit()
     cur.close()
+
+
+def insert_institute_notification(conn,class_id):
+
+    cur = conn.cursor()
+
+    institute_id_query = """
+        SELECT institute_id
+        FROM institute_classes
+        WHERE id = %s
+    """
+
+    cur.execute(institute_id_query, (class_id,))
+    result = cur.fetchone()
+    institute_id = result[0]
+
+    insert_query = """INSERT INTO institute_class_notifications (institute_id, institute_class_id, title, message, created_at)
+                        VALUES (%s, %s, %s, %s, %s)"""
+
+    title = f"Tier Classification Updated"
+    message = f"Tier Classification updaetd for Class {class_id} in Institute {institute_id} at {datetime.now()}"
+
+    cur.execute(insert_query, (institute_id, class_id, title, message, datetime.now()))
+
+    conn.commit()
+    cur.close()

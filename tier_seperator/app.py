@@ -49,6 +49,7 @@ async def upload_data(
 
     classifier.update_institute_class_students(conn, tier_df)
     classifier.insert_and_update_institute_class_tier_students(conn, df, marks_out_of, class_id)
+    classifier.insert_institute_notification(conn,class_id)
     
     return {
         "message": "Data uploaded successfully"
