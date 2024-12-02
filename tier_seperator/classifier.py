@@ -9,9 +9,15 @@ from datetime import datetime
 
 
 def classify(df, n_clusters):
-    gmm = GaussianMixture(n_components=n_clusters)
+    gmm = GaussianMixture(n_components=n_clusters, random_state=42)
     gmm.fit(df[['marks']])
+ 
     df['tier'] = gmm.predict(df[['marks']])
+    cluster_means = df.groupby('tier')['marks'].mean()
+    sorted_clusters = cluster_means.sort_values(ascending=False).index
+    cluster_mapping = {cluster: i + 1 for i, cluster in enumerate(sorted_clusters)}
+    df['tier'] = df['tier'].map(cluster_mapping)
+    
     return df
 
 def tier_df(df):
